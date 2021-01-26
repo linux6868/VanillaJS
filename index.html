@@ -4,22 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <script src="index.js"></script>
+    <script src="test.js"></script>
 </head>
 <body>
-    <script>
-        var data = '[ \
-                        {"co":0.6,"so2":0.006,"o3":0.009}, \
-                        {"co":0.7,"so2":0.005,"o3":0.007}, \
-                        {"co":0.6,"so2":0.006,"o3":0.014} \
-                    ]';
-        eval('var x = 30;');
 
-        console.log(x);
+    <input type="button" value="클릭" id="btn-print" /> <br />
+    <span id="span1">스팬입니다</span>
 
-        eval("var ar = " + data + ";");
-
-        console.log(ar[0].co);
-
-    </script>
 </body>
 </html>
