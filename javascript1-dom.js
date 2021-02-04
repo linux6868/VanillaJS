@@ -1,3 +1,75 @@
+//Ex7-노드복제와 템플릿 태그
+window.addEventListener("load", function() {
+    var notice = [
+        {id:5, title:"쫘이야~~~", regDate:"2019-01-26", writeId:"nerwlec", hit:0},
+        {id:6, title:"나 좀 복제해줘~", regDate:"2019-01-26", writeId:"nerwlec", hit:17}
+    ];
+
+    var section = document.querySelector("#section7");
+
+    var noticeList = section.querySelectot(".notice-list");
+    var tbodyNode = noticeList.querySelector("tbody");
+    var cloneButton = section.querySelector(".clone-button");
+    var templateButton = section.querySelector(".template-button");
+
+    cloneButton.onclick = function() {
+
+    };
+
+    templateButton.onclick = function() {
+
+    };
+});
+
+//Ex6-노드조작 : 메뉴추가(createTextNode, Element)
+window.addEventListener("load", function() {
+    var section = document.querySelector("#section6");
+
+    var titleInput = section.querySelector(".title-input");
+    var menuListUl = section.querySelector(".menu-list");
+    var addButton = section.querySelector(".add-button");
+    var delButton = section.querySelector(".del-button");
+
+    addButton.onclick = function() {
+        var title = titleInput.value;
+
+        var html = '<a href="">'+title+'</a>';
+        var li = document.createElement("li");
+        li.innerHTML = html;
+
+        // menuListUl.appendChild(li);
+        menuListUl.append(li);
+
+        /*
+        var title = titleInput.value;
+        var txtNode = document.createTextNode(title);
+
+        var aNode = document.createElement("a");
+        aNode.href="";
+        aNode.appendChild(txtNode);
+
+        var liNode = document.createElement("li");
+        liNode.appendChild(aNode);
+
+        menuListUl.appendChild(liNode);
+        */
+
+        /*
+        var title = titleInput.value;
+        var txtNode = document.createTextNode(title);
+        menuListDiv.appendChild(txtNode);
+        */
+    };
+
+    delButton.onclick = function() {
+        // var txtNode = menuListUl.childNodes[0];
+
+        var liNode = menuListUl.children[0];
+        //menuListUl.removeChild(liNode);
+        liNode.remove();
+    };
+});
+
 //Ex5 : 엘리먼트 노드의 속성  & CSS 속성 변경
 window.addEventListener("load", function() {
     var section = document.querySelector("#section5");
