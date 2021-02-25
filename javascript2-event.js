@@ -4,21 +4,29 @@ window.addEventListener("load", function(){
     var container = section.querySelector(".container");
     var box = section.querySelector(".box");
     var dragging = false;
+    var offset = {x:0, y:0};
 
     container.onmousedown = function(e) {
-        dragging = true;
+        // console.log(e.target);
+        if(e.target == box)
+            dragging = true;
     };
 
     container.onmousemove = function(e) {
         if(!dragging) return;
         
-        box.style.left = e.pageX+"px";
-        box.style.top = e.pageY+"px";
+        box.style.left = e.pageX - offset.x +"px";
+        box.style.top = e.pageY - offset.y +"px";
     };
 
     container.onmouseup = function(e) {
         dragging = false;
     };
+
+    box.onmousedown = function(e) {
+        offset.x = e.offsetX;
+        offset.y = e.offsetY;
+    }
 });
 
 // Ex6-마우스 이벤트 객체 : 마우스 좌표
