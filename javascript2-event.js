@@ -1,3 +1,76 @@
+
+
+// Ex9-마우스 이벤트 객체 : 빅스의 옵셋 영역 좌표 이용하기
+window.addEventListener("load", function(){
+    var section = document.querySelector("#section9");
+    var container = section.querySelector(".container");
+    var status = section.querySelector(".status");
+    var dragging = false;
+    var offset = {x:0, y:0};
+    var current = null;
+    var left = container.offsetLeft;
+    var top = container.offsetTop;
+
+    container.onmousedown = function(e) {
+        if(e.target.classList.contains("box")) {
+            dragging = true;
+            current = e.target;
+            offset.x = e.offsetX;
+            offset.y = e.offsetY;
+        }
+    };
+
+    container.onmousemove = function(e) {
+        if(!dragging) return;
+
+        var x = e.pageX - offset.x - left;
+        var y = e.pageY - offset.y - top;
+        
+        current.style.left = x +"px";
+        current.style.top = y +"px";
+
+        status.innerText = "(x,y) : ("+x+","+y+")";
+    };
+
+    container.onmouseup = function(e) {
+        dragging = false;
+    };
+
+});
+
+// Ex8-마우스 이벤트 객체 : 여러개 박스 드래그 방식으로 옮기기
+window.addEventListener("load", function(){
+    var section = document.querySelector("#section8");
+    var container = section.querySelector(".container");
+    var box = section.querySelector(".box");
+    var dragging = false;
+    var offset = {x:0, y:0};
+    var current = null;
+
+    container.onmousedown = function(e) {
+        
+        if(e.target.classList.contains("box")) {
+            dragging = true;
+            current = e.target;
+            offset.x = e.offsetX;
+            offset.y = e.offsetY;
+    
+        }
+    };
+
+    container.onmousemove = function(e) {
+        if(!dragging) return;
+        
+        current.style.left = e.pageX - offset.x +"px";
+        current.style.top = e.pageY - offset.y +"px";
+    };
+
+    container.onmouseup = function(e) {
+        dragging = false;
+    };
+
+});
+
 // Ex7-마우스 이벤트 객체 : 드래그 방식으로 박스 옮기기
 window.addEventListener("load", function(){
     var section = document.querySelector("#section7");
